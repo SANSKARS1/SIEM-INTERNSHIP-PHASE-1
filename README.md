@@ -5,6 +5,12 @@ Threat Detection Environment through SIEM.
 
 This repository demonstrates the detection of common adversarial behaviors on a Linux system using **Splunk Enterprise** and **Splunk Universal Forwarder**. Logs are collected from Linux systems and ingested into Splunk for real-time analysis and alerting.
 
+## 🏗️ Architecture
+
+
+![mermaid-ai-diagram-2025-05-16-100656](https://github.com/user-attachments/assets/f45da94b-ff63-481b-984f-d92bd78992b5)
+
+
 Using Splunk's powerful search and alerting capabilities, the following security scenarios are covered:
 
 ### 🔄 Lateral Movement
