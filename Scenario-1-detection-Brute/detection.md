@@ -60,3 +60,5 @@ index="linux_logs" sourcetype=auth ("Failed password" OR "Accepted password")
 
 ![Screenshot 2025-05-15 175440](https://github.com/user-attachments/assets/0303d87c-131c-448e-bb91-68d2b56f8ba6)
 
+## Detection Status
+✅ Working – Tested on Kali with Splunk Forwarder → Windows Splunk Enterprise
