@@ -17,7 +17,7 @@ This detection should identify excessive failed login attempts from the same IP 
 
 ---
 
-## Event ID / Data Source Mapping
+##  Data Source Mapping
 
 ### 🔐 SSH Authentication Event Log (Extracted from Splunk)
 
@@ -29,8 +29,13 @@ This detection should identify excessive failed login attempts from the same IP 
 | 2025-05-15T18:28:40.807+0530 | success  | kali       |             | kali           | 192.168.1.7  | kali   | linux_logs | /var/log/auth.log      | auth         | KANHA           | 10                     | 1747313921             | 1747313921           |
 
 
-## Detection Logic / Query (Splunk SPL)
+### 🛡️ Detection Logic: SSH Brute-Force Followed by Success
 
+This SPL (Search Processing Language) query detects cases where a brute-force attack (≥10 failed SSH login attempts) is followed by a successful login **within 2 minutes** from the same `src_ip` and targeting the same `username`.
+
+#### 🔍 SPL Query Used:
+
+```spl
 index="linux_logs" sourcetype=auth ("Failed password" OR "Accepted password")
 | rex "from (?<src_ip>\d{1,3}(?:\.\d{1,3}){3})"
 | eval status=if(searchmatch("Failed password"), "failed", "success")
