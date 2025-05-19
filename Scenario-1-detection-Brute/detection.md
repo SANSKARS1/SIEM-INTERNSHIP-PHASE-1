@@ -28,6 +28,7 @@ This detection should identify excessive failed login attempts from the same IP 
 | 2025-05-15T18:28:40.657+0530 | failed   | kali       | kali        |                | 192.168.1.7  | kali   | linux_logs | /var/log/auth.log      | auth         | KANHA           | 10                     | 1747313921             | 1747313921           |
 | 2025-05-15T18:28:40.807+0530 | success  | kali       |             | kali           | 192.168.1.7  | kali   | linux_logs | /var/log/auth.log      | auth         | KANHA           | 10                     | 1747313921             | 1747313921           |
 
+![5](https://github.com/user-attachments/assets/6fa1a041-4a2c-4fe8-8693-2f61b066a3a8)
 
 ### 🛡️ Detection Logic: SSH Brute-Force Followed by Success
 
@@ -54,3 +55,5 @@ index="linux_logs" sourcetype=auth ("Failed password" OR "Accepted password")
 | eval last_fail_time_fmt = strftime(last_fail_time, "%b %d %Y %I:%M:%S %p")
 | eval success_time_fmt = strftime(success_time, "%b %d %Y %I:%M:%S %p")
 | eval time_diff = success_time - last_fail_time
+
+## Alert
