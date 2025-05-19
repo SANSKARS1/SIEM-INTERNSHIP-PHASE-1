@@ -55,5 +55,8 @@ index="linux_logs" sourcetype=auth ("Failed password" OR "Accepted password")
 | eval last_fail_time_fmt = strftime(last_fail_time, "%b %d %Y %I:%M:%S %p")
 | eval success_time_fmt = strftime(success_time, "%b %d %Y %I:%M:%S %p")
 | eval time_diff = success_time - last_fail_time
-
+```
 ## Alert
+
+![Screenshot 2025-05-15 175440](https://github.com/user-attachments/assets/0303d87c-131c-448e-bb91-68d2b56f8ba6)
+
