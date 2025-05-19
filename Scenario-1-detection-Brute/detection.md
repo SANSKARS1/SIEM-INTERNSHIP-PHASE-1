@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/fa12d83a-4d01-429a-9cda-657b3ffd5e82)# Detection Use Case: Brute Force Attack Detection
+# Detection Use Case: Brute Force Attack Detection
 
 ## Scenario Description
 An attacker attempts multiple failed SSH login attempts on a Linux machine (`auth.log`), followed by a successful login from the same IP. This behavior may indicate a successful brute-force attack.
@@ -31,4 +31,21 @@ This detection should identify excessive failed login attempts from the same IP 
 
 ## Detection Logic / Query (Splunk SPL)
 
-
+index="linux_logs" sourcetype=auth ("Failed password" OR "Accepted password")
+| rex "from (?<src_ip>\d{1,3}(?:\.\d{1,3}){3})"
+| eval status=if(searchmatch("Failed password"), "failed", "success")
+| rex "Failed password for (?<fail_user>\w+)"
+| rex "Accepted password for (?<success_user>\w+)"
+| eval username=coalesce(fail_user, success_user)
+| sort 0 _time
+| streamstats current=f window=10 count(eval(status="failed")) as consecutive_failures by src_ip, username
+| streamstats current=f last(_time) as last_fail_time_raw by src_ip, username
+| where consecutive_failures >= 10 
+| eval success_time_epoch=round(_time)
+| eval last_fail_time_epoch=round(last_fail_time_raw)
+| eval time_diff = success_time_epoch - last_fail_time_epoch
+| where time_diff <= 120
+| stats min(last_fail_time_epoch) as last_fail_time max(success_time_epoch) as success_time max(consecutive_failures) as fail_count by src_ip, username
+| eval last_fail_time_fmt = strftime(last_fail_time, "%b %d %Y %I:%M:%S %p")
+| eval success_time_fmt = strftime(success_time, "%b %d %Y %I:%M:%S %p")
+| eval time_diff = success_time - last_fail_time
