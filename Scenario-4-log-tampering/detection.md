@@ -57,9 +57,11 @@ index="linux_logs" sourcetype=syslog (
 
 ## Log / Sample event
 
-_time	Image	CommandLine	User	ProcessId	ParentProcessId	ParentImage	ParentUser	UtcTime
-2025-05-20T23:50:13.789+0530	/usr/bin/cat	cat /var/log/auth.log	root	64977	2275	/usr/bin/zsh	root	20:13.8
-2025-05-20T23:50:05.416+0530	/usr/bin/cat	cat /var/log/syslog	root	64907	2275	/usr/bin/zsh	root	20:05.4
+| _time                   | Image        | CommandLine           | User | ProcessId | ParentProcessId | ParentImage   | ParentUser | UtcTime |
+|-------------------------|--------------|-----------------------|------|-----------|-----------------|---------------|------------|---------|
+| 2025-05-20T23:50:13.789+0530 | /usr/bin/cat | cat /var/log/auth.log | root | 64977     | 2275            | /usr/bin/zsh  | root       | 20:13.8 |
+| 2025-05-20T23:50:05.416+0530 | /usr/bin/cat | cat /var/log/syslog   | root | 64907     | 2275            | /usr/bin/zsh  | root       | 20:05.4 |
+
 
 
 ## Detection Status
