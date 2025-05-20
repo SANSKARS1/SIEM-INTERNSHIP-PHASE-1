@@ -19,16 +19,22 @@ This detection should identify excessive failed login attempts from the same IP 
 
 ##  Data Source Mapping
 
-### 🔐 SSH Authentication Event Log (Extracted from Splunk)
+| Field Name              | Description / Sample Value            |
+|--------------------------|----------------------------------------|
+| `_time`                 | `2025-05-15T18:28:40.541+0530`         |
+| `status`                | `failed` / `success`                   |
+| `username`              | `kali`                                 |
+| `fail_user`             | `kali` (from `Failed password for`)    |
+| `success_user`          | `kali` (from `Accepted password for`)  |
+| `src_ip`                | `192.168.1.7`                           |
+| `host`                  | `kali`                                 |
+| `index`                 | `linux_logs`                           |
+| `source`                | `/var/log/auth.log`                    |
+| `sourcetype`            | `auth`                                 |
+| `splunk_server`         | `KANHA`                                |
+| `consecutive_failures`  | `10`                                   |
 
-| `_time`                       | `status` | `username` | `fail_user` | `success_user` | `src_ip`     | `host` | `index`     | `source`              | `sourcetype` | `splunk_server` | `consecutive_failures` | `last_fail_time_epoch` | `success_time_epoch` |
-|------------------------------|----------|------------|-------------|----------------|--------------|--------|-------------|------------------------|--------------|------------------|------------------------|------------------------|----------------------|
-| 2025-05-15T18:28:40.541+0530 | failed   | kali       | kali        |                | 192.168.1.7  | kali   | linux_logs | /var/log/auth.log      | auth         | KANHA           | 10                     | 1747313920             | 1747313921           |
-| 2025-05-15T18:28:40.641+0530 | failed   | kali       | kali        |                | 192.168.1.7  | kali   | linux_logs | /var/log/auth.log      | auth         | KANHA           | 10                     | 1747313921             | 1747313921           |
-| 2025-05-15T18:28:40.657+0530 | failed   | kali       | kali        |                | 192.168.1.7  | kali   | linux_logs | /var/log/auth.log      | auth         | KANHA           | 10                     | 1747313921             | 1747313921           |
-| 2025-05-15T18:28:40.807+0530 | success  | kali       |             | kali           | 192.168.1.7  | kali   | linux_logs | /var/log/auth.log      | auth         | KANHA           | 10                     | 1747313921             | 1747313921           |
 
-![5](https://github.com/user-attachments/assets/6fa1a041-4a2c-4fe8-8693-2f61b066a3a8)
 
 ### 🛡️ Detection Logic: SSH Brute-Force Followed by Success
 
@@ -59,6 +65,18 @@ index="linux_logs" sourcetype=auth ("Failed password" OR "Accepted password")
 ## Alert
 
 ![Screenshot 2025-05-15 175440](https://github.com/user-attachments/assets/0303d87c-131c-448e-bb91-68d2b56f8ba6)
+
+## Log / Sample event
+
+| `_time`                       | `status` | `username` | `fail_user` | `success_user` | `src_ip`     | `host` | `index`     | `source`              | `sourcetype` | `splunk_server` | `consecutive_failures` | `last_fail_time_epoch` | `success_time_epoch` |
+|------------------------------|----------|------------|-------------|----------------|--------------|--------|-------------|------------------------|--------------|------------------|------------------------|------------------------|----------------------|
+| 2025-05-15T18:28:40.541+0530 | failed   | kali       | kali        |                | 192.168.1.7  | kali   | linux_logs | /var/log/auth.log      | auth         | KANHA           | 10                     | 1747313920             | 1747313921           |
+| 2025-05-15T18:28:40.641+0530 | failed   | kali       | kali        |                | 192.168.1.7  | kali   | linux_logs | /var/log/auth.log      | auth         | KANHA           | 10                     | 1747313921             | 1747313921           |
+| 2025-05-15T18:28:40.657+0530 | failed   | kali       | kali        |                | 192.168.1.7  | kali   | linux_logs | /var/log/auth.log      | auth         | KANHA           | 10                     | 1747313921             | 1747313921           |
+| 2025-05-15T18:28:40.807+0530 | success  | kali       |             | kali           | 192.168.1.7  | kali   | linux_logs | /var/log/auth.log      | auth         | KANHA           | 10                     | 1747313921             | 1747313921           |
+
+---
+![5](https://github.com/user-attachments/assets/6fa1a041-4a2c-4fe8-8693-2f61b066a3a8)
 
 ## Detection Status
 ✅ Working – Tested on Kali with Splunk Forwarder → Windows Splunk Enterprise
