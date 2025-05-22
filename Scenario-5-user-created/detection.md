@@ -62,3 +62,11 @@ index="linux_logs" sourcetype="auth"
 
 ✅ Working – Tested on Kali Linux VM with Splunk Universal Forwarder → Windows Splunk Enterprise. Captures any executed useradd, adduser, passwd -d, passwd -l, and usermod commands.
 
+## 🔗 MITRE ATT&CK Mapping
+
+| MITRE Technique ID | Technique Name                                                                             | Description                                                          |
+| ------------------ | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| T1136              | Create Account                                                                             | Adversaries create new user accounts to maintain persistence.        |
+| T1543.003          | Create or Modify System Process: Windows Service (Linux equivalent: system services/users) | Creating or modifying system-level accounts or services.             |
+| T1059.004          | Command and Scripting Interpreter: Unix Shell                                              | Using shell commands like `useradd` or `usermod` to create accounts. |
+
