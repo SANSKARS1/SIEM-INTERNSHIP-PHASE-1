@@ -80,3 +80,26 @@ index="linux_logs" sourcetype=auth ("Failed password" OR "Accepted password")
 
 ## Detection Status
 ✅ Working – Tested on Kali with Splunk Forwarder → Windows Splunk Enterprise
+
+## Analyst Notes / Recommendations
+
+### Brute Force Detection
+- **Actions:**
+  - Investigate the source IP for signs of automated attacks.
+  - Check for additional failed login attempts on other accounts from the same IP.
+  - Correlate with endpoint alerts or IDS/IPS logs for related suspicious activity.
+  - Consider temporarily blocking or throttling the source IP if attacks persist.
+- **Possible False Positives:**
+  - Legitimate users mistyping passwords multiple times.
+  - Automated scripts or monitoring tools performing regular authentication checks.
+
+---
+
+## 🔗 MITRE ATT&CK Mapping
+
+| Technique ID | Name                           | Tactic                                               | Platform |
+| ------------ | ------------------------------ | ---------------------------------------------------- | -------- |
+| T1110.001    | Brute Force: Password Guessing | Credential Access                                    | Linux    |
+| T1078        | Valid Accounts                 | Persistence / Defense Evasion / Privilege Escalation | Linux    |
+
+
