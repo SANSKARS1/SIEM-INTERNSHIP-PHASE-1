@@ -76,6 +76,7 @@ index="linux_logs" sourcetype="auth"
 
 ---
 
+
 ## ✅ Detection Status
 
 ✅ **Working** – Verified in a lab environment using:
@@ -83,6 +84,16 @@ index="linux_logs" sourcetype="auth"
 - Splunk Universal Forwarder to ship `/var/log/syslog` and `/var/log/auth.log` to Splunk Enterprise
 
 ---
+## Analyst Notes / Recommendations
+
+- **Actions:**
+  - Identify the initial point of compromise and scope the spread of the attack.
+  - Investigate unusual or unauthorized access between hosts, especially with privilege escalation.
+  - Review logs for the use of administrative tools or commands that facilitate lateral movement.
+- **Possible False Positives:**
+  - Legitimate administrative or maintenance activities across systems.
+  - Automated patch management or configuration management tools.
+
 ---
 
 ## 🔗 MITRE ATT&CK Mapping
