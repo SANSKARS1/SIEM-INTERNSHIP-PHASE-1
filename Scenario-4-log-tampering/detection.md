@@ -68,3 +68,12 @@ index="linux_logs" sourcetype=syslog (
 ## Detection Status
 ✅ Working – Verified on Kali Linux by running commands like rm ~/.bash_history, history -c, and cat /var/log/auth.log. Triggered alerts in Splunk via syslog.
 
+## 🔗 MITRE ATT&CK Mapping
+
+
+| MITRE Technique ID | Technique Name                              | Description                                                                                    |
+| ------------------ | ------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| T1070.001          | Indicator Removal: Clear Logs               | Deleting or altering logs to cover tracks and avoid detection.                                 |
+| T1565.001          | Data Manipulation: Stored Data Manipulation | Modifying stored data including logs to hide malicious activity.                               |
+| T1495              | Firmware Corruption                         | Manipulating device firmware that could affect log generation. (less common for log tampering) |
+
