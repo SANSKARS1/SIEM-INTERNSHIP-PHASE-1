@@ -1,15 +1,15 @@
-![image](https://github.com/user-attachments/assets/3c45651a-6fee-4fdd-84b9-d404c20bbdf0)# Detection Use Case: Lateral Movement via SSH and File Transfers
+# Detection Use Case: Lateral Movement via SSH and File Transfers
 
-## 📝 Scenario Description
+##  Scenario Description
 Lateral movement is a common tactic where an attacker, after compromising a system, uses SSH (`sshd`) or file transfer utilities (`scp`, `sftp`) to move laterally across the network. This detection identifies such activities by parsing system logs for successful SSH logins, logouts, and file transfers.
 
-## 🎯 Objective
+##  Objective
 Detect potential lateral movement by monitoring:
 - SSH logins (`Accepted password` or `Accepted publickey`)
 - SSH logouts (`session closed`)
 - File transfers (`scp`, `sftp`)
 
-## 🛠️ Tools Used
+##  Tools Used
 - **SIEM**: Splunk Enterprise
 - **Log Source**: Linux Syslog (`/var/log/syslog`, `/var/log/auth.log`)
 - **Lab Setup**:
@@ -19,7 +19,7 @@ Detect potential lateral movement by monitoring:
 
 ---
 
-## 📊 Data Source Mapping
+##  Data Source Mapping
 
 ### 🔍 Syslog/Auth Events
 
