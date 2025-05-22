@@ -68,6 +68,16 @@ index="linux_logs" sourcetype=syslog (
 ## Detection Status
 ✅ Working – Verified on Kali Linux by running commands like rm ~/.bash_history, history -c, and cat /var/log/auth.log. Triggered alerts in Splunk via syslog.
 
+## Analyst Notes / Recommendations
+
+- **Actions:**
+  - Immediately check for signs of tampering across all critical logs and audit trails.
+  - Preserve all current logs and system states for forensic analysis.
+  - Harden logging configurations and review permissions on log files.
+- **Possible False Positives:**
+  - Log rotation or archival processes that delete or compress old logs.
+  - Legitimate administrative log cleanup operations.
+
 ## 🔗 MITRE ATT&CK Mapping
 
 
