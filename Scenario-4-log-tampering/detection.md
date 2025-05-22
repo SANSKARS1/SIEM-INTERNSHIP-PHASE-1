@@ -53,6 +53,7 @@ index="linux_logs" sourcetype=syslog (
 ```
 ## Alert
 
+![image](https://github.com/user-attachments/assets/7020ba14-e4dd-44c3-84f8-b539f6d6ffb5)
 
 
 ## Log / Sample event
