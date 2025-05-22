@@ -78,3 +78,11 @@ index="linux_logs" sourcetype="auth"
 
 ✅ Working – Detection successfully validated using test logins at 9:42 PM and CRON root session.
 
+## 🔗 MITRE ATT&CK Mapping
+
+| MITRE Technique ID | Technique Name       | Description                                                                                         |
+| ------------------ | -------------------- | --------------------------------------------------------------------------------------------------- |
+| T1078              | Valid Accounts       | Use of valid credentials potentially at unusual times indicating unauthorized access.               |
+| T1110              | Brute Force          | Repeated login attempts during odd hours to evade detection.                                        |
+| T1021.004          | Remote Services: SSH | Remote access via SSH during off-hours possibly indicating lateral movement or unauthorized access. |
+
