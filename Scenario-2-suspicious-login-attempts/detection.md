@@ -78,6 +78,16 @@ index="linux_logs" sourcetype="auth"
 
 ✅ Working – Detection successfully validated using test logins at 9:42 PM and CRON root session.
 
+## Analyst Notes / Recommendations
+
+- **Actions:**
+  - Verify whether the login is consistent with user’s typical behavior or authorized remote access policies.
+  - Reach out to the user or the security team for validation if the login looks suspicious.
+  - Monitor subsequent activity from the user session for anomalies.
+- **Possible False Positives:**
+  - Users working late or remotely outside normal hours.
+  - Scheduled batch jobs or automated scripts authenticating during off-hours.
+
 ## 🔗 MITRE ATT&CK Mapping
 
 | MITRE Technique ID | Technique Name       | Description                                                                                         |
