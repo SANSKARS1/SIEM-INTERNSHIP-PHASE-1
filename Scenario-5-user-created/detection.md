@@ -62,6 +62,16 @@ index="linux_logs" sourcetype="auth"
 
 ✅ Working – Tested on Kali Linux VM with Splunk Universal Forwarder → Windows Splunk Enterprise. Captures any executed useradd, adduser, passwd -d, passwd -l, and usermod commands.
 
+## Analyst Notes / Recommendations
+
+- **Actions:**
+  - Verify if the new user account creation was authorized and aligns with change management policies.
+  - Investigate the source and context of the account creation (e.g., scripts, admins).
+  - Check for follow-up suspicious activities by the new user such as privilege escalation or unusual access.
+- **Possible False Positives:**
+  - Routine onboarding or provisioning of new employees.
+  - Automated user account creation via approved system processes or configuration management.
+
 ## 🔗 MITRE ATT&CK Mapping
 
 | MITRE Technique ID | Technique Name                                                                             | Description                                                          |
